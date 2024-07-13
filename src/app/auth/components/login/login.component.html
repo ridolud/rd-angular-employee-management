@@ -1,0 +1,25 @@
+<div class="w-full h-screen flex items-center justify-center">
+  <form [formGroup]="loginForm" class="flex flex-col min-w-80">
+    <h1 class="text-4xl mb-4">Login</h1>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="loginForm.get('username')?.hasError('pattern')"
+        >Username should not contain spaces or symbols</mat-error
+      >
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <div><button mat-flat-button (click)="onLogin()">Login</button></div>
+  </form>
+</div>

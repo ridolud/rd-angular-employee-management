@@ -1,0 +1,131 @@
+<div class="flex gap-2 mb-4 text-gray-500 text-sm">
+  <a [routerLink]="['..']">Employees</a> /
+  <a>New</a>
+</div>
+<div class="flex justify-between items-center mb-2">
+  <h2 class="text-2xl font-medium mb-2">New Employee</h2>
+  <div class="flex"></div>
+</div>
+<form [formGroup]="employeeForm" (submit)="onSubmit()">
+  <div class="max-w-2xl grid grid-cols-2 gap-2">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="employeeForm.get('username')?.hasError('pattern')"
+        >Username should not contain spaces or symbols</mat-error
+      >
+      <mat-error *ngIf="employeeForm.get('username')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="col-span-2">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('email')"
+        >Email should be a valid email address</mat-error
+      >
+      <mat-error *ngIf="employeeForm.get('email')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birt Date</mat-label>
+      <input
+        matInput
+        [max]="maxDate"
+        [matDatepicker]="picker"
+        formControlName="birthDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Group</mat-label>
+      <mat-select formControlName="group">
+        <mat-option value="HR Department">HR Department</mat-option>
+        <mat-option value="Finance Department">Finance Department</mat-option>
+        <mat-option value="Marketing Department"
+          >Marketing Department</mat-option
+        >
+        <mat-option value="IT Department">IT Department</mat-option>
+        <mat-option value="Sales Department">Sales Department</mat-option>
+        <mat-option value="Operations Department"
+          >Operations Department</mat-option
+        >
+        <mat-option value="Research and Development"
+          >Research and Development</mat-option
+        >
+        <mat-option value="Product Development">Product Development</mat-option>
+        <mat-option value="Customer Service">Customer Service</mat-option>
+        <mat-option value="Supply Chain Management"
+          >Supply Chain Management</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="employeeForm.get('group')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Basic Salary</mat-label>
+      <input matInput type="number" formControlName="basicSalary" />
+      <mat-error *ngIf="employeeForm.get('basicSalary')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <div class="col-span-2 mb-4 flex-col flex">
+      <mat-label>Status</mat-label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        formControlName="status"
+      >
+        <mat-radio-button value="non-active" class="example-radio-button">
+          Non Active
+        </mat-radio-button>
+        <mat-radio-button value="active" class="example-radio-button"
+          >Active
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field class="col-span-2">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="employeeForm.get('description')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="flex gap-2">
+    <button mat-button (click)="onBack()">Cancel</button>
+    <button mat-flat-button type="submit">Save</button>
+  </div>
+</form>

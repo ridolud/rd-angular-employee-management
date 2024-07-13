@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.error-snackbar.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  @apply bg-red-600;
+}
+
+.warning-snackbar.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  @apply bg-yellow-600;
+}

@@ -1,0 +1,61 @@
+<div class="flex gap-2 mb-4 text-gray-500 text-sm">
+  <a>Employees</a>
+</div>
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-medium mb-2">Employees</h2>
+  <div class="flex">
+    <button mat-flat-button (click)="onBack()">Ok</button>
+  </div>
+</div>
+<div class="grid grid-cols-2 w-full max-w-[700px] gap-4">
+  <div class="">
+    <div class="text-sm text-gray-400">Username</div>
+    <div>{{ employee?.username }}</div>
+  </div>
+
+  <div class="">
+    <div class="text-sm text-gray-400">Email</div>
+    <div>{{ employee?.email }}</div>
+  </div>
+
+  <div class="">
+    <div class="text-sm text-gray-400">First Name</div>
+    <div>{{ employee?.firstName }}</div>
+  </div>
+
+  <div class="">
+    <div class="text-sm text-gray-400">Last Name</div>
+    <div>{{ employee?.lastName }}</div>
+  </div>
+
+  <div class="">
+    <div class="text-sm text-gray-400">Birt Date</div>
+    <div>{{ employee?.birthDate | date : "d MMM yyyy" }}</div>
+  </div>
+
+  <div class="">
+    <div class="text-sm text-gray-400">Group</div>
+    <div>{{ employee?.group }}</div>
+  </div>
+
+  <div>
+    <div class="text-sm text-gray-400">Basic Salary</div>
+    <div>
+      {{ employee?.basicSalary | idr_currency }}
+    </div>
+  </div>
+
+  <div>
+    <div class="text-sm text-gray-400">Status</div>
+    <div>
+      {{ employee?.status }}
+    </div>
+  </div>
+
+  <div class="col-span-2">
+    <div class="text-sm text-gray-400">Description</div>
+    <div>
+      {{ employee?.description }}
+    </div>
+  </div>
+</div>
